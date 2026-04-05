@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sahaay - Login</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Manrope & Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-dim": "#644d50",
+                    "on-surface-variant": "#596063",
+                    "secondary-container": "#f8d8ff",
+                    "on-secondary-fixed-variant": "#803f9b",
+                    "surface-container-highest": "#dde3e7",
+                    "surface-tint": "#0960ac",
+                    "primary-fixed-dim": "#80b6ff",
+                    "inverse-primary": "#6aa8f9",
+                    "outline-variant": "#acb3b7",
+                    "on-primary-container": "#003d72",
+                    "tertiary-container": "#f8d8db",
+                    "surface-dim": "#d3dbdf",
+                    "tertiary": "#71595c",
+                    "inverse-surface": "#0b0f10",
+                    "secondary-fixed-dim": "#f2c5ff",
+                    "on-error": "#fff7f6",
+                    "on-primary-fixed": "#00284e",
+                    "error-container": "#f56965",
+                    "surface-bright": "#f7f9fb",
+                    "on-surface": "#2d3337",
+                    "on-secondary-fixed": "#60207c",
+                    "secondary": "#84439f",
+                    "surface-variant": "#dde3e7",
+                    "on-primary": "#f8f8ff",
+                    "on-secondary-container": "#753590",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed-variant": "#6b5457",
+                    "on-error-container": "#65000b",
+                    "inverse-on-surface": "#9a9d9f",
+                    "on-background": "#2d3337",
+                    "secondary-fixed": "#f8d8ff",
+                    "secondary-dim": "#773792",
+                    "surface-container": "#eaeef1",
+                    "on-primary-fixed-variant": "#004682",
+                    "primary-fixed": "#9ac3ff",
+                    "on-tertiary-container": "#614a4d",
+                    "on-secondary": "#fff7fc",
+                    "primary-dim": "#005499",
+                    "error": "#ac3434",
+                    "surface-container-low": "#f1f4f6",
+                    "error-dim": "#70030f",
+                    "primary": "#0960ac",
+                    "on-tertiary": "#fff7f7",
+                    "primary-container": "#9ac3ff",
+                    "tertiary-fixed": "#f8d8db",
+                    "surface": "#f7f9fb",
+                    "on-tertiary-fixed": "#4d383b",
+                    "outline": "#757c7f",
+                    "tertiary-fixed-dim": "#e9cacd",
+                    "surface-container-high": "#e3e9ec",
+                    "background": "#f7f9fb"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Manrope"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .ethereal-bg {
+            background: linear-gradient(15deg, #0960ac 0%, #9ac3ff 30%, #f7f9fb 60%, #f8d8ff 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-background font-body text-on-surface min-h-screen flex flex-col">
+<!-- TopNavBar (Shared Component) - Navigation shell suppressed for transactional login page -->
+<nav class="fixed top-0 w-full z-50 bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center px-8 h-20 w-full max-w-7xl mx-auto">
+<div class="text-2xl font-bold tracking-tighter text-blue-800 dark:text-blue-300 font-manrope">
+                Sahaay
+            </div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-inter text-xs uppercase tracking-widest text-slate-600 dark:text-slate-400 hover:text-blue-700 transition-all" href="#">Support</a>
+<a class="px-6 py-2 rounded-full bg-gradient-to-r from-primary to-primary-dim text-on-primary font-semibold hover:opacity-90 transition-all scale-95 active:duration-150" href="#">Sign Up</a>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow ethereal-bg relative flex items-center justify-center px-6 pt-24 pb-12 overflow-hidden">
+<!-- Decorative Orchid Blur -->
+<div class="absolute -top-24 -right-24 w-96 h-96 bg-secondary-container opacity-40 blur-[120px] rounded-full"></div>
+<div class="absolute -bottom-24 -left-24 w-80 h-80 bg-primary-container opacity-30 blur-[100px] rounded-full"></div>
+<!-- Login Container -->
+<div class="glass-card w-full max-w-[540px] rounded-xl p-10 md:p-16 flex flex-col items-center text-center shadow-[0_40px_40px_rgba(45,51,55,0.04)] relative z-10">
+<!-- Branding Area -->
+<div class="mb-12">
+<h1 class="text-primary font-headline font-extrabold text-[3.5rem] tracking-tighter leading-none mb-4">Sahaay</h1>
+<p class="text-on-surface-variant font-headline text-lg leading-relaxed">Your safe space to talk and reflect</p>
+</div>
+<!-- Form Area -->
+<form class="w-full flex flex-col gap-6">
+<!-- Email Input -->
+<div class="text-left">
+<label class="block font-label text-[0.75rem] font-semibold uppercase tracking-widest text-on-surface-variant mb-3 ml-2">EMAIL ADDRESS</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary transition-colors">mail</span>
+<input class="w-full pl-12 pr-6 py-4 bg-surface-container-low border-none focus:ring-1 focus:ring-primary rounded-sm text-on-surface placeholder:text-outline-variant transition-all font-body" placeholder="hello@sahaay.com" type="email"/>
+</div>
+</div>
+<!-- Password Input -->
+<div class="text-left">
+<div class="flex justify-between items-center mb-3">
+<label class="font-label text-[0.75rem] font-semibold uppercase tracking-widest text-on-surface-variant ml-2">PASSWORD</label>
+<a class="font-label text-[0.75rem] font-medium text-primary hover:underline" href="#">Forgot?</a>
+</div>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary transition-colors">lock</span>
+<input class="w-full pl-12 pr-6 py-4 bg-surface-container-low border-none focus:ring-1 focus:ring-primary rounded-sm text-on-surface placeholder:text-outline-variant transition-all font-body" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<!-- Login CTA -->
+<button class="w-full mt-4 py-4 rounded-lg bg-gradient-to-r from-primary to-primary-dim text-on-primary font-headline font-bold text-lg shadow-lg hover:opacity-95 transition-all active:scale-[0.98]" type="submit">
+                    Login
+                </button>
+</form>
+<!-- Secondary Actions -->
+<div class="mt-10 flex flex-col gap-4">
+<p class="text-on-surface-variant font-body">
+                    New here? <a class="text-primary font-bold hover:text-primary-dim transition-colors" href="./signup.html">
+                      Create account
+                    </a>
+</p>
+<div class="flex items-center gap-4 opacity-40 py-2">
+<div class="h-px w-12 bg-outline-variant"></div>
+<span class="font-label text-[0.65rem] uppercase tracking-widest">or continue with</span>
+<div class="h-px w-12 bg-outline-variant"></div>
+</div>
+<div class="flex gap-4 justify-center">
+<button class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center hover:bg-surface-variant transition-colors">
+<img alt="Google" class="w-5 h-5" data-alt="Official Google color logo icon centered on a clean white circle background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSpCIcPVWSP7YagDe_zzkK1A5q32nf7qYZ7El5TuRTy4--tcMCR0HXqtR4OGKBhh0dyUDK-ZwRi37BYsV8uquDgK7bujmCxKX_iVDA-yyzGA-cPYZ4TdzLXmK1cS6vab8XDwZyfomwhxeOuRD6E_caDoVo6v3QlyXwXy_4LrVQyx_WeHvDOQU6pWo62jkszdxriWpvFWhbyqArUKE2nFh3LXLLnu0lvHQid8WMfUIopo8llkbqQAFDmXX4dx5IB75y7hmFShCXIs8"/>
+</button>
+<button class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center hover:bg-surface-variant transition-colors">
+<img alt="Apple" class="w-5 h-5" data-alt="Official Apple monochrome logo icon centered on a clean white circle background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDRcFn3dzGnDXxE0_FJTfoMIacV6lHdXTE-uqM6fq6d2-k1XRX2DgcBuwOThaWJnLBcXAchCgZ5CiM1g6y6oD4Qjqf8pVn3kA0mKSt8ic1G_wZTLBb0Oiy8hKCJI2R2osamYmIFbktNMURCX7SFVfNoz4E84VD4QIldB31XUa9y0kVT7ZfaMw37UcYebLMdpsHpfW06E-A1_Fhie3iXfC_6v8MxrX6Nk09pdrZra9Rf6JyGKSwTeWFBXikoQqeQfUCkZs2-YGxY-c"/>
+</button>
+</div>
+</div>
+</div>
+<!-- Bottom Image Decoration -->
+<div class="absolute bottom-0 right-0 w-1/3 h-1/2 pointer-events-none opacity-20">
+<img alt="calm abstract" class="w-full h-full object-cover rounded-tl-[100%] border-l border-t border-white/10" data-alt="abstract flowing silks in soft shades of light blue and lavender with cinematic soft focus and ethereal studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUVO6Ry0j4dHP28XVsfq09D8JgRz3okxV5psBnSELQ4pqjEpXNDVyAiJuV45kWvfslTtQbXO5vYKl7xIwZVn0HOcRk39H2g-MfOAd-iSL2IT1YTYOeDL010mt5-eayznVkl4eP4u1EZgaoT_6t-qaXDaQKwljxLJC03HPe8ikxtYkuaD2IIJsKkhqmPR0wL8ZUKqMablipx2f7hj0HAW2UP9PqX4-vbcvAGnyzoKpILjKSfwMj1Sn2mFjE9fJ-0zvG6xpva9KogMU"/>
+</div>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="bg-slate-50 dark:bg-slate-950 w-full py-12 px-8">
+<div class="flex flex-col md:flex-row justify-between items-center w-full max-w-7xl mx-auto gap-4">
+<span class="font-inter text-xs uppercase tracking-widest text-slate-500 dark:text-slate-500">
+                © 2026 Sahaay Wellness. All rights reserved.
+            </span>
+<div class="flex gap-8">
+<a class="font-inter text-xs uppercase tracking-widest text-slate-500 dark:text-slate-500 hover:text-blue-800 dark:hover:text-blue-200 transition-colors opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="font-inter text-xs uppercase tracking-widest text-slate-500 dark:text-slate-500 hover:text-blue-800 dark:hover:text-blue-200 transition-colors opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+<a class="font-inter text-xs uppercase tracking-widest text-slate-500 dark:text-slate-500 hover:text-blue-800 dark:hover:text-blue-200 transition-colors opacity-80 hover:opacity-100" href="#">Support</a>
+</div>
+</div>
+</footer>
+<script type="module">
+  import { loginUser, setToken } from "./js/api.js";
+
+  console.log("LOGIN SCRIPT LOADED");
+
+  const form = document.querySelector("form");
+  const emailInput = form.querySelector("input[type='email']");
+  const passwordInput = form.querySelector("input[type='password']");
+  const submitButton = form.querySelector("button[type='submit']");
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    console.log("FORM SUBMITTED");
+
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
+
+    if (!email || !password) {
+      alert("Please enter both email and password.");
+      return;
+    }
+
+    submitButton.disabled = true;
+
+    try {
+      console.log("Sending login request...");
+
+      const data = await loginUser(email, password);
+      console.log("Login success:", data);
+
+      setToken(data.token);
+
+      window.location.href = "./dashboard.html";
+
+    } catch (error) {
+      console.error("Login error:", error);
+      alert(error.message || "Unable to log in.");
+    } finally {
+      submitButton.disabled = false;
+    }
+  });
+</script>
+</body></html>

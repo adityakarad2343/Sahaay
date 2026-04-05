@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sahaay | AI Wellness Assistant</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "secondary-fixed": "#f8d8ff",
+                "on-background": "#2d3337",
+                "primary-dim": "#005499",
+                "surface-container-lowest": "#ffffff",
+                "on-error": "#fff7f6",
+                "tertiary-container": "#f8d8db",
+                "primary-fixed": "#9ac3ff",
+                "on-primary-fixed-variant": "#004682",
+                "secondary-fixed-dim": "#f2c5ff",
+                "on-tertiary": "#fff7f7",
+                "on-error-container": "#65000b",
+                "error": "#ac3434",
+                "surface-container-highest": "#dde3e7",
+                "primary-container": "#9ac3ff",
+                "on-tertiary-fixed": "#4d383b",
+                "on-primary": "#f8f8ff",
+                "secondary": "#84439f",
+                "surface-container-low": "#f1f4f6",
+                "outline-variant": "#acb3b7",
+                "on-tertiary-fixed-variant": "#6b5457",
+                "secondary-dim": "#773792",
+                "secondary-container": "#f8d8ff",
+                "error-dim": "#70030f",
+                "inverse-surface": "#0b0f10",
+                "surface-container-high": "#e3e9ec",
+                "surface-dim": "#d3dbdf",
+                "surface-variant": "#dde3e7",
+                "error-container": "#f56965",
+                "surface": "#f7f9fb",
+                "on-tertiary-container": "#614a4d",
+                "primary": "#0960ac",
+                "on-secondary-container": "#753590",
+                "surface-tint": "#0960ac",
+                "on-surface": "#2d3337",
+                "tertiary": "#71595c",
+                "inverse-on-surface": "#9a9d9f",
+                "tertiary-fixed": "#f8d8db",
+                "on-surface-variant": "#596063",
+                "surface-container": "#eaeef1",
+                "on-secondary-fixed": "#60207c",
+                "on-primary-container": "#003d72",
+                "on-primary-fixed": "#00284e",
+                "tertiary-dim": "#644d50",
+                "on-secondary-fixed-variant": "#803f9b",
+                "background": "#f7f9fb",
+                "inverse-primary": "#6aa8f9",
+                "tertiary-fixed-dim": "#e9cacd",
+                "primary-fixed-dim": "#80b6ff",
+                "surface-bright": "#f7f9fb",
+                "outline": "#757c7f",
+                "on-secondary": "#fff7fc"
+            },
+            "borderRadius": {
+                "DEFAULT": "1rem",
+                "lg": "2rem",
+                "xl": "3rem",
+                "full": "9999px"
+            },
+            "fontFamily": {
+                "headline": ["Manrope"],
+                "body": ["Manrope"],
+                "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .listening-pulse {
+            animation: pulse-glow 3s infinite ease-in-out;
+        }
+        @keyframes pulse-glow {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(9, 96, 172, 0.3); }
+            50% { transform: scale(1.05); box-shadow: 0 0 50px rgba(132, 67, 159, 0.5); }
+        }
+    </style>
+</head>
+<body class="font-body bg-surface text-on-surface min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl shadow-[0_40px_40px_rgba(0,0,0,0.04)]">
+<nav class="flex justify-between items-center w-full px-8 h-20 max-w-screen-2xl mx-auto">
+<a class="text-2xl font-bold tracking-tighter text-blue-800 dark:text-blue-300" href="./dashboard.html">Sahaay</a>
+<div class="hidden md:flex gap-10">
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 font-manrope text-lg tracking-tight transition-all duration-300" href="./journal.html">Journal</a>
+<a class="text-blue-700 dark:text-blue-400 font-semibold border-b-2 border-blue-500 pb-1 font-manrope text-lg tracking-tight transition-all duration-300" href="./dashboard.html">Sahaay</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 font-manrope text-lg tracking-tight transition-all duration-300" href="./insights.html">Insights</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 font-manrope text-lg tracking-tight transition-all duration-300" href="./settings.html">Settings</a>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-high ring-2 ring-white/50">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" data-alt="close-up portrait of a young woman with a calm expression in a softly lit indoor environment with warm tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmhoNoWiQyx6SYVsoaxx6aqrCuwG777WVqCI8nr-s5y1pr95k75WoAAJtX7qz2J3MDNuV4f19Aqf4qgMIrigoswJAepX6KZbVOImOsOLvJBQzzooEWsPw8PCzDfZdXtxhiefTTyXFKWqVsr4dljbjnI6u5Ibk5LF6o7WCgWDeIgOqzkdxXlXJIuwIWLB1c7pG8qxEJ-IoR0i-9dkXvHb1vBsKdjgC9FYhxxpgbw6MnZcxgQ9-A-fp0hj3tSkB31ZG-f3oBRjv1e6Q"/>
+</div>
+<button class="material-symbols-outlined text-slate-600 hover:bg-white/20 p-2 rounded-full transition-all duration-300 scale-95 active:scale-90" data-icon="logout">logout</button>
+</div>
+</nav>
+</header>
+<main class="flex-grow pt-32 pb-20 px-8 max-w-screen-2xl mx-auto w-full">
+<!-- Atmospheric Background Element -->
+<div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+<div class="absolute top-[-10%] right-[-5%] w-[60%] h-[60%] rounded-full bg-gradient-to-br from-primary/10 to-secondary/10 blur-[120px]"></div>
+<div class="absolute bottom-[-10%] left-[-5%] w-[50%] h-[50%] rounded-full bg-gradient-to-tr from-secondary/5 to-primary/10 blur-[100px]"></div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<!-- Left & Central: Voice Interaction -->
+<div class="lg:col-span-7 flex flex-col items-center lg:items-start space-y-12">
+<header class="space-y-2 lg:pl-8">
+<h1 class="text-5xl md:text-6xl font-headline font-extrabold tracking-tight text-on-surface" id="username">Hi there</h1>
+<p class="text-xl font-headline text-on-surface-variant font-light">How are you feeling today?</p>
+</header>
+<div class="w-full flex flex-col items-center justify-center py-12 space-y-8">
+<div class="relative group">
+<div class="absolute inset-0 bg-gradient-to-tr from-primary to-secondary blur-3xl opacity-20 group-hover:opacity-40 transition-opacity duration-500 rounded-full"></div>
+<button class="listening-pulse relative w-48 h-48 rounded-full bg-gradient-to-br from-primary to-secondary-dim flex items-center justify-center shadow-2xl text-white transition-transform duration-300 hover:scale-105 active:scale-95">
+<span class="material-symbols-outlined text-6xl" data-icon="mic" style="font-variation-settings: 'FILL' 1;">mic</span>
+</button>
+</div>
+<div class="text-center space-y-2">
+<p class="text-2xl font-headline font-semibold text-primary animate-pulse">Listening...</p>
+<p class="text-sm font-label uppercase tracking-widest text-outline">Tap to speak</p>
+</div>
+</div>
+</div>
+<!-- Right: AI Response & Insights -->
+<div class="lg:col-span-5 space-y-8">
+<!-- AI Response Card -->
+<div class="glass-card rounded-xl p-8 shadow-[0_40px_40px_rgba(0,0,0,0.04)] ring-1 ring-white/20 flex flex-col gap-6">
+<div class="flex justify-between items-start">
+<span class="bg-secondary-fixed-dim text-on-secondary-fixed px-4 py-1.5 rounded-full text-xs font-label font-semibold tracking-wider uppercase" id="emotionBadge">Peaceful</span>
+<div class="flex gap-2">
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined text-xl" data-icon="share">share</span>
+</button>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex flex-col gap-4 overflow-y-auto pr-2" id="chat-container" style="max-height: 350px;">
+<div class="self-start bg-surface-container px-4 py-2 rounded-xl max-w-[70%]">"I'm here for you. Tell me more about that sense of calm you mentioned..."</div>
+</div>
+</div>
+<div class="mt-4 border-t pt-3 flex items-center gap-2">
+<select id="lang-select" class="bg-surface-container min-w-[112px] px-3 py-2 pr-8 rounded text-sm">
+<option value="en">English</option>
+<option value="hi">Hindi</option>
+<option value="mr">Marathi</option>
+</select>
+<input class="flex-1 px-4 py-2 rounded-full bg-surface-container outline-none" id="text-input" placeholder="Type how you feel..."/>
+<button class="px-3 py-2 rounded-full bg-surface-container" id="mic-btn" type="button">🎤</button>
+<button class="px-4 py-2 bg-primary text-white rounded-full" id="send-btn" type="button">Send</button>
+</div>
+<div class="pt-4 flex gap-4">
+<button class="flex items-center gap-2 bg-gradient-to-br from-primary to-primary-dim text-on-primary px-8 py-4 rounded-lg font-semibold hover:shadow-lg transition-all active:scale-95" id="listenButton">
+<span class="material-symbols-outlined" data-icon="volume_up">volume_up</span>
+                            Listen
+                        </button>
+<button class="p-4 rounded-lg bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+</button>
+</div>
+</div>
+<!-- Recent Reflections Bento Section -->
+<section class="space-y-6">
+<div class="flex justify-between items-end px-2">
+<h2 class="text-xl font-headline font-bold">Recent reflections</h2>
+<a class="text-xs font-label uppercase tracking-widest text-primary font-bold hover:underline" href="#">View All</a>
+</div>
+<div class="grid grid-cols-1 gap-4">
+<!-- Reflection Card 1 -->
+<div class="glass-card rounded-md p-6 ring-1 ring-outline-variant/15 flex items-center gap-6 hover:translate-x-2 transition-transform duration-300 cursor-pointer">
+<div class="w-14 h-14 rounded-full bg-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary" data-icon="sentiment_very_satisfied">sentiment_very_satisfied</span>
+</div>
+<div class="space-y-1">
+<h3 class="font-headline font-semibold text-on-surface">Feeling grateful...</h3>
+<p class="text-sm text-on-surface-variant line-clamp-1">Today was about appreciating the small moments of quiet.</p>
+<p class="text-[10px] font-label uppercase tracking-tighter text-outline mt-1">Yesterday, 8:45 PM</p>
+</div>
+</div>
+<!-- Reflection Card 2 -->
+<div class="glass-card rounded-md p-6 ring-1 ring-outline-variant/15 flex items-center gap-6 hover:translate-x-2 transition-transform duration-300 cursor-pointer">
+<div class="w-14 h-14 rounded-full bg-surface-container-high flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-outline" data-icon="cloud">cloud</span>
+</div>
+<div class="space-y-1">
+<h3 class="font-headline font-semibold text-on-surface">Woke up feeling a bit anxious...</h3>
+<p class="text-sm text-on-surface-variant line-clamp-1">Processing some thoughts about the upcoming week's deadline.</p>
+<p class="text-[10px] font-label uppercase tracking-tighter text-outline mt-1">Oct 24, 7:12 AM</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 mt-auto bg-slate-50 dark:bg-slate-950 flex flex-col md:flex-row justify-between items-center px-12 border-t border-slate-200/20">
+<div class="text-slate-500 dark:text-slate-500 font-inter text-xs tracking-wider uppercase mb-4 md:mb-0">
+            © 2026 Sahaay Wellness. All rights reserved.
+        </div>
+<div class="flex gap-8">
+<a class="text-slate-500 dark:text-slate-500 hover:text-blue-400 transition-colors font-inter text-xs tracking-wider uppercase opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="text-slate-500 dark:text-slate-500 hover:text-blue-400 transition-colors font-inter text-xs tracking-wider uppercase opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+<a class="text-slate-500 dark:text-slate-500 hover:text-blue-400 transition-colors font-inter text-xs tracking-wider uppercase opacity-80 hover:opacity-100" href="#">Cookie Settings</a>
+</div>
+</footer>
+<audio class="hidden" id="responseAudio"></audio>
+<script type="module">
+  import { clearToken, getToken } from "./js/api.js";
+
+  const API_BASE_URL = "http://127.0.0.1:5000";
+  const token = getToken() || localStorage.getItem("token") || localStorage.getItem("sahaayToken");
+  if (!token) {
+    window.location.href = "./login.html";
+  }
+
+  const usernameHeading = document.getElementById("username");
+  const micButton = document.querySelector(".listening-pulse");
+  const inlineMicButton = document.getElementById("mic-btn");
+  const sendButton = document.getElementById("send-btn");
+  const textInput = document.getElementById("text-input");
+  const langSelect = document.getElementById("lang-select");
+  const logoutButton = document.querySelector("button[data-icon='logout']");
+  const emotionBadge = document.getElementById("emotionBadge");
+  const chatContainer = document.getElementById("chat-container");
+  const listenButton = document.getElementById("listenButton");
+  const responseAudio = document.getElementById("responseAudio");
+  const statusText = document.querySelector(".text-center.space-y-2 p");
+  const hintText = document.querySelector(".text-center.space-y-2 p + p");
+  let lastAudioUrl = "";
+  let lastObjectUrl = "";
+  let isTyping = false;
+  let micModeActive = false;
+  let mediaRecorder = null;
+  let mediaStream = null;
+  let audioChunks = [];
+  let silenceTimer = null;
+  let audioContext = null;
+  let analyser = null;
+  let sourceNode = null;
+  let silenceMonitor = null;
+
+  function normalizeMessage(text) {
+    return String(text || "")
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, " ");
+  }
+
+  function isConversationClosingMessage(text) {
+    const normalized = normalizeMessage(text);
+    const closingMessages = new Set([
+      "thank you",
+      "thanks",
+      "thanks a lot",
+      "thank u",
+      "thankyou",
+      "bye",
+      "bye bye",
+      "goodbye",
+      "ok bye",
+      "okay bye",
+      "see you",
+      "see you later",
+      "take care"
+    ]);
+    return closingMessages.has(normalized);
+  }
+
+  function updateUserName(name) {
+    if (!name || !usernameHeading) {
+      return;
+    }
+
+    usernameHeading.textContent = `Hi ${name}`;
+  }
+
+  function formatEmotion(emotion) {
+    if (!emotion) {
+      return "Neutral";
+    }
+
+    return emotion.charAt(0).toUpperCase() + emotion.slice(1);
+  }
+
+  function addMessage(text, sender) {
+    const div = document.createElement("div");
+    div.dataset.message = text;
+
+    if (sender === "user") {
+      div.className = "user-msg self-end bg-primary text-white px-4 py-2 rounded-xl max-w-[70%]";
+      div.innerText = text;
+    } else {
+      div.className = "bot-msg self-start bg-surface-container px-4 py-2 rounded-xl max-w-[70%]";
+      div.innerText = text;
+    }
+
+    const container = document.getElementById("chat-container");
+    container.appendChild(div);
+
+    container.scrollTop = container.scrollHeight;
+  }
+
+  function buildAudioUrl(audioUrl) {
+    if (!audioUrl) {
+      return "";
+    }
+
+    if (audioUrl.startsWith("http://") || audioUrl.startsWith("https://")) {
+      return audioUrl;
+    }
+
+    return `${API_BASE_URL}${audioUrl}`;
+  }
+
+  async function playResponseAudio(audioUrl) {
+    const resolvedUrl = buildAudioUrl(audioUrl);
+    if (!resolvedUrl) {
+      return;
+    }
+
+    try {
+      const response = await fetch(resolvedUrl);
+      if (!response.ok) {
+        throw new Error("Unable to load audio.");
+      }
+
+      const audioBlob = await response.blob();
+      if (lastObjectUrl) {
+        URL.revokeObjectURL(lastObjectUrl);
+      }
+
+      lastObjectUrl = URL.createObjectURL(audioBlob);
+      lastAudioUrl = lastObjectUrl;
+      responseAudio.src = lastAudioUrl;
+      await responseAudio.play();
+    } catch (error) {
+      console.error("AUDIO PLAYBACK FAILED:", error);
+    }
+  }
+
+  function clearSilenceTimer() {
+    if (silenceTimer) {
+      clearTimeout(silenceTimer);
+      silenceTimer = null;
+    }
+  }
+
+  function stopSilenceMonitor() {
+    clearSilenceTimer();
+
+    if (silenceMonitor) {
+      clearInterval(silenceMonitor);
+      silenceMonitor = null;
+    }
+
+    if (sourceNode) {
+      sourceNode.disconnect();
+      sourceNode = null;
+    }
+
+    if (audioContext) {
+      audioContext.close().catch(() => {});
+      audioContext = null;
+    }
+
+    analyser = null;
+  }
+
+  function resetSilenceTimer() {
+    clearSilenceTimer();
+    silenceTimer = setTimeout(() => {
+      stopRecording(true);
+    }, 2000);
+  }
+
+  function startSilenceMonitor(stream) {
+    if (!window.AudioContext && !window.webkitAudioContext) {
+      return;
+    }
+
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+    audioContext = new AudioContextClass();
+    analyser = audioContext.createAnalyser();
+    analyser.fftSize = 2048;
+    sourceNode = audioContext.createMediaStreamSource(stream);
+    sourceNode.connect(analyser);
+
+    const dataArray = new Uint8Array(analyser.fftSize);
+    resetSilenceTimer();
+
+    silenceMonitor = setInterval(() => {
+      if (!analyser) {
+        return;
+      }
+
+      analyser.getByteTimeDomainData(dataArray);
+
+      let sum = 0;
+      for (let index = 0; index < dataArray.length; index += 1) {
+        const normalized = (dataArray[index] - 128) / 128;
+        sum += normalized * normalized;
+      }
+
+      const rms = Math.sqrt(sum / dataArray.length);
+      if (rms > 0.02) {
+        resetSilenceTimer();
+      }
+    }, 200);
+  }
+
+  async function sendTextMessage() {
+    const text = textInput.value.trim();
+    if (!text) {
+      return;
+    }
+
+    addMessage(text, "user");
+    textInput.value = "";
+    statusText.textContent = "Thinking...";
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/process_audio`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          text,
+          language: langSelect.value
+        })
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || "Unable to process your message.");
+      }
+
+      updateUserName(data.name);
+      addMessage(data.response || data.text || "I'm here for you.", "bot");
+      emotionBadge.textContent = formatEmotion(data.emotion);
+      statusText.textContent = "Response ready";
+      hintText.textContent = "Tap to speak or type again";
+
+      if (isConversationClosingMessage(text)) {
+        micModeActive = false;
+      }
+
+      if (data.audio_url) {
+        await playResponseAudio(data.audio_url);
+      }
+    } catch (error) {
+      console.error(error);
+      alert(error.message || "Unable to process your message.");
+      statusText.textContent = "Listening...";
+      hintText.textContent = "Tap to speak or type again";
+    }
+  }
+
+  async function uploadVoiceMessage(audioBlob) {
+    const formData = new FormData();
+    formData.append("audio", audioBlob, "recording.wav");
+    formData.append("language", langSelect.value);
+
+    statusText.textContent = "Processing...";
+    hintText.textContent = "Preparing your response";
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/process_audio_file`, {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${token}`
+        },
+        body: formData
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || "Unable to process your audio.");
+      }
+
+      updateUserName(data.name);
+      if (data.text) {
+        addMessage(data.text, "user");
+      }
+
+      addMessage(data.response || "I'm here for you.", "bot");
+      emotionBadge.textContent = formatEmotion(data.emotion);
+      statusText.textContent = "Response ready";
+      hintText.textContent = "Tap to speak or type again";
+
+      if (isConversationClosingMessage(data.text)) {
+        micModeActive = false;
+      }
+
+      if (data.audio_url) {
+        await playResponseAudio(data.audio_url);
+      }
+    } catch (error) {
+      console.error(error);
+      alert(error.message || "Unable to process your audio.");
+      statusText.textContent = "Listening...";
+      hintText.textContent = "Tap to speak or type again";
+    }
+  }
+
+  async function startRecording() {
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia || !window.MediaRecorder) {
+      alert("Audio recording is not supported in this browser.");
+      return;
+    }
+
+    try {
+      mediaStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      audioChunks = [];
+      mediaRecorder = new MediaRecorder(mediaStream);
+
+      mediaRecorder.addEventListener("dataavailable", (event) => {
+        if (event.data && event.data.size > 0) {
+          audioChunks.push(event.data);
+        }
+      });
+
+      mediaRecorder.addEventListener("stop", async () => {
+        stopSilenceMonitor();
+        const audioBlob = new Blob(audioChunks, { type: mediaRecorder.mimeType || "audio/webm" });
+
+        if (mediaStream) {
+          mediaStream.getTracks().forEach((track) => track.stop());
+          mediaStream = null;
+        }
+
+        setTimeout(async () => {
+          await uploadVoiceMessage(audioBlob);
+        }, 2000);
+      });
+
+      mediaRecorder.start();
+      startSilenceMonitor(mediaStream);
+      statusText.textContent = "Recording...";
+      hintText.textContent = "Tap the mic again to stop";
+    } catch (error) {
+      console.error(error);
+      alert("Unable to access your microphone.");
+    }
+  }
+
+  function stopRecording(keepMicMode = true) {
+    if (mediaRecorder && mediaRecorder.state === "recording") {
+      micModeActive = keepMicMode;
+      statusText.textContent = "Finishing...";
+      hintText.textContent = "Preparing your response";
+      stopSilenceMonitor();
+      mediaRecorder.stop();
+      return;
+    }
+
+    if (!keepMicMode) {
+      micModeActive = false;
+    }
+  }
+
+  async function toggleRecording() {
+    if (mediaRecorder && mediaRecorder.state === "recording") {
+      stopRecording(false);
+      return;
+    }
+
+    isTyping = false;
+    micModeActive = true;
+    await startRecording();
+  }
+
+  async function replayAudio() {
+    if (!lastAudioUrl) {
+      return;
+    }
+
+    try {
+      responseAudio.src = lastAudioUrl;
+      await responseAudio.play();
+    } catch (error) {
+      console.error("AUDIO REPLAY FAILED:", error);
+    }
+  }
+
+  async function loadChatHistory() {
+    try {
+      const response = await fetch(`${API_BASE_URL}/sessions/recent`, {
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || "Unable to load recent sessions.");
+      }
+
+      updateUserName(data.name);
+      const sessions = Array.isArray(data.sessions) ? data.sessions : [];
+      chatContainer.innerHTML = "";
+
+      if (sessions.length === 0) {
+        addMessage("I'm here for you. Tell me more about that sense of calm you mentioned...", "bot");
+        return;
+      }
+
+      sessions.reverse().forEach((session) => {
+        if (session.user_input) {
+          addMessage(session.user_input, "user");
+        }
+
+        if (session.response) {
+          addMessage(session.response, "bot");
+        }
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  responseAudio.addEventListener("ended", () => {
+    if (!micModeActive || isTyping) {
+      return;
+    }
+
+    setTimeout(() => {
+      if ((!mediaRecorder || mediaRecorder.state !== "recording") && !isTyping) {
+        startRecording();
+      }
+    }, 500);
+  });
+
+  sendButton.addEventListener("click", sendTextMessage);
+  micButton.addEventListener("click", toggleRecording);
+  inlineMicButton.addEventListener("click", toggleRecording);
+  listenButton.addEventListener("click", replayAudio);
+  textInput.addEventListener("focus", () => {
+    isTyping = true;
+  });
+  textInput.addEventListener("blur", () => {
+    if (!textInput.value.trim()) {
+      isTyping = false;
+    }
+  });
+  textInput.addEventListener("input", () => {
+    isTyping = true;
+  });
+  document.getElementById("text-input")
+    .addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        isTyping = false;
+        document.getElementById("send-btn").click();
+      }
+    });
+
+  logoutButton.addEventListener("click", async () => {
+    try {
+      await fetch(`${API_BASE_URL}/audio/cleanup`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+        keepalive: true
+      });
+    } catch (error) {
+      console.error("AUDIO CLEANUP FAILED:", error);
+    }
+
+    clearToken();
+    localStorage.removeItem("token");
+    localStorage.removeItem("sahaayToken");
+    window.location.href = "./login.html";
+  });
+
+  loadChatHistory();
+</script>
+</body></html>

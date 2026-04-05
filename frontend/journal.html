@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sahaay Journal | Your Emotional Sanctuary</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#eaeef1",
+                        "secondary-fixed-dim": "#f2c5ff",
+                        "on-tertiary-fixed-variant": "#6b5457",
+                        "on-error-container": "#65000b",
+                        "surface-container-highest": "#dde3e7",
+                        "tertiary-container": "#f8d8db",
+                        "on-surface-variant": "#596063",
+                        "on-tertiary-fixed": "#4d383b",
+                        "outline": "#757c7f",
+                        "tertiary-dim": "#644d50",
+                        "on-primary": "#f8f8ff",
+                        "on-secondary-fixed-variant": "#803f9b",
+                        "error-dim": "#70030f",
+                        "tertiary-fixed": "#f8d8db",
+                        "on-secondary": "#fff7fc",
+                        "surface-container-low": "#f1f4f6",
+                        "surface-container-high": "#e3e9ec",
+                        "secondary-container": "#f8d8ff",
+                        "on-error": "#fff7f6",
+                        "inverse-surface": "#0b0f10",
+                        "primary": "#0960ac",
+                        "on-primary-fixed-variant": "#004682",
+                        "surface-variant": "#dde3e7",
+                        "primary-fixed-dim": "#80b6ff",
+                        "on-primary-container": "#003d72",
+                        "on-tertiary-container": "#614a4d",
+                        "surface-tint": "#0960ac",
+                        "secondary-fixed": "#f8d8ff",
+                        "inverse-primary": "#6aa8f9",
+                        "on-tertiary": "#fff7f7",
+                        "primary-dim": "#005499",
+                        "on-secondary-fixed": "#60207c",
+                        "on-primary-fixed": "#00284e",
+                        "on-background": "#2d3337",
+                        "tertiary": "#71595c",
+                        "outline-variant": "#acb3b7",
+                        "on-secondary-container": "#753590",
+                        "inverse-on-surface": "#9a9d9f",
+                        "error-container": "#f56965",
+                        "surface": "#f7f9fb",
+                        "primary-container": "#9ac3ff",
+                        "error": "#ac3434",
+                        "background": "#f7f9fb",
+                        "surface-dim": "#d3dbdf",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#f7f9fb",
+                        "on-surface": "#2d3337",
+                        "secondary-dim": "#773792",
+                        "tertiary-fixed-dim": "#e9cacd",
+                        "secondary": "#84439f",
+                        "primary-fixed": "#9ac3ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Manrope"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .ethereal-bg {
+            background: linear-gradient(15deg, #f7f9fb 0%, #9ac3ff 40%, #f8d8ff 100%);
+        }
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: #f7f9fb;
+        }
+    </style>
+</head>
+<body class="text-on-background min-h-screen flex flex-col">
+<nav class="fixed top-0 w-full z-50 bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl shadow-[0_40px_40px_-15px_rgba(0,0,0,0.04)]">
+<div class="flex justify-between items-center px-12 h-20 w-full max-w-screen-2xl mx-auto">
+<a class="text-2xl font-bold tracking-tighter text-blue-800 dark:text-blue-200" href="./dashboard.html">Sahaay</a>
+<div class="hidden md:flex items-center gap-10 font-manrope text-lg tracking-tight">
+<a class="text-blue-700 dark:text-blue-300 font-bold border-b-2 border-blue-500 pb-1" href="./journal.html">Journal</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-all duration-300" href="./dashboard.html">Sahaay</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-all duration-300" href="./insights.html">Insights</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-all duration-300" href="./settings.html">Settings</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:bg-blue-50/50 rounded-full transition-all" id="logoutButton" type="button">
+<span class="material-symbols-outlined">logout</span>
+</button>
+<img alt="User profile avatar" class="w-10 h-10 rounded-full object-cover ring-2 ring-primary/20" data-alt="Close up portrait of a smiling woman with natural lighting in a high-end minimalist setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQcKiVqEpuAJ0eGMUNTsHfmxPHc3J7I1B6GisaeclzCDgfUN2h0LpfljHBUKhNMRZ47kHoOkDpBA37bkmzw3VZ77avVMmBWIEgrs9SO78w5NlMellXallgwzHULBEP0y4DkPG44_kNvVQdTlXxDIcnkztDinNSc23H1BwiQDrm_HnMgZVKEzOcw0cfSywJfnOiaKjkhG4lbrqdTc17c_yvd10fXAf5-JhSfzie41xsHl0ywTFO1VThcUG--hAGD7u6NLpv6nBlewg"/>
+</div>
+</div>
+</nav>
+<main class="flex-grow pt-32 pb-20 px-12 max-w-screen-2xl mx-auto w-full relative">
+<div class="fixed top-0 right-0 w-1/2 h-full ethereal-bg opacity-20 -z-10 pointer-events-none"></div>
+<header class="mb-16">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
+<div>
+<h1 class="text-6xl font-extrabold tracking-tight text-primary mb-4">Journal</h1>
+<p class="text-xl text-on-surface-variant max-w-2xl font-light leading-relaxed">
+                        A calm space for practical suggestions and private notes inspired by your recent conversations with Sahaay.
+                    </p>
+</div>
+</div>
+</header>
+
+<section class="max-w-5xl mx-auto grid grid-cols-1 xl:grid-cols-[1.1fr_0.9fr] gap-8">
+<div class="glass-card rounded-xl p-8 md:p-10 shadow-[0_40px_40px_-15px_rgba(0,0,0,0.04)] border border-white/40">
+<div class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+<div>
+<h2 class="text-3xl font-bold text-primary font-headline">Smart suggestions</h2>
+<p class="text-on-surface-variant mt-2">Small next steps for food, rest, movement, and balance based on your latest chat.</p>
+</div>
+<p class="text-xs font-label uppercase tracking-widest text-outline" id="suggestions-status">Loading suggestions...</p>
+</div>
+
+<div class="mt-8 space-y-4" id="suggestions-container"></div>
+</div>
+
+<div class="glass-card rounded-xl p-8 md:p-10 shadow-[0_40px_40px_-15px_rgba(0,0,0,0.04)] border border-white/40">
+<div class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+<div>
+<h2 class="text-3xl font-bold text-primary font-headline">Your notes</h2>
+<p class="text-on-surface-variant mt-2">Capture private thoughts, edit them anytime, and keep your journal focused on what matters.</p>
+</div>
+<p class="text-xs font-label uppercase tracking-widest text-outline" id="notes-status">Loading notes...</p>
+</div>
+
+<div class="mt-8 space-y-4">
+<textarea class="w-full min-h-32 rounded-xl bg-surface-container p-4 outline-none resize-y text-on-surface" id="note-input" placeholder="Write a note about how you feel today..."></textarea>
+<div class="flex items-center justify-between gap-4">
+<p class="text-xs font-label uppercase tracking-widest text-outline" id="editor-status">Create a note to save something important from today.</p>
+<button class="px-6 py-3 rounded-full bg-primary text-white font-semibold transition hover:bg-primary-dim" id="save-note-btn" type="button">Save note</button>
+</div>
+</div>
+
+<div class="mt-8 flex max-h-[50vh] flex-col gap-4 overflow-y-auto pr-2" id="notes-container"></div>
+</div>
+</section>
+</main>
+<footer class="w-full border-t border-slate-200/15 bg-slate-50 dark:bg-slate-950">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 py-8 w-full max-w-screen-2xl mx-auto">
+<p class="font-inter text-xs tracking-widest uppercase text-slate-400">© 2026 Sahaay Wellness. All rights reserved.</p>
+<div class="flex gap-8 mt-6 md:mt-0 font-inter text-xs tracking-widest uppercase">
+<a class="text-slate-400 hover:text-blue-500 transition-colors opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="text-slate-400 hover:text-blue-500 transition-colors opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+<a class="text-slate-400 hover:text-blue-500 transition-colors opacity-80 hover:opacity-100" href="#">Cookie Settings</a>
+</div>
+</div>
+</footer>
+
+<script type="module">
+  import { clearToken, getToken } from "./js/api.js";
+
+  const API_BASE_URL = "http://127.0.0.1:5000";
+  let editingNoteId = null;
+
+  function getStoredToken() {
+    return getToken() || localStorage.getItem("token") || localStorage.getItem("sahaayToken");
+  }
+
+  const token = getStoredToken();
+  if (!token) {
+    window.location.href = "./login.html";
+  }
+
+  const suggestionsContainer = document.getElementById("suggestions-container");
+  const suggestionsStatus = document.getElementById("suggestions-status");
+  const notesContainer = document.getElementById("notes-container");
+  const notesStatus = document.getElementById("notes-status");
+  const noteInput = document.getElementById("note-input");
+  const saveNoteButton = document.getElementById("save-note-btn");
+  const editorStatus = document.getElementById("editor-status");
+  const logoutButton = document.getElementById("logoutButton");
+
+  function escapeHtml(value) {
+    return String(value ?? "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#39;");
+  }
+
+  function formatTimestamp(timestamp) {
+    if (!timestamp) {
+      return "Saved recently";
+    }
+
+    const date = new Date(timestamp);
+    if (Number.isNaN(date.getTime())) {
+      return "Saved recently";
+    }
+
+    return date.toLocaleString();
+  }
+
+  function setEditorMode(note = null) {
+    editingNoteId = note?.id ?? null;
+    noteInput.value = note?.content ?? "";
+    saveNoteButton.textContent = editingNoteId ? "Update note" : "Save note";
+    editorStatus.textContent = editingNoteId
+      ? "Editing an existing note."
+      : "Create a note to save something important from today.";
+  }
+
+  function renderSuggestions(suggestions) {
+    suggestionsContainer.innerHTML = "";
+
+    if (!Array.isArray(suggestions) || suggestions.length === 0) {
+      const emptyState = document.createElement("div");
+      emptyState.className = "rounded-xl bg-surface-container p-5 text-on-surface-variant";
+      emptyState.textContent = "Suggestions will appear here after you chat with Sahaay.";
+      suggestionsContainer.appendChild(emptyState);
+      return;
+    }
+
+    suggestions.forEach((suggestion, index) => {
+      const item = document.createElement("article");
+      item.className = "bg-surface-container rounded-xl p-5 border border-white/40 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.12)]";
+      item.innerHTML = `
+        <div class="flex items-start gap-4">
+          <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary-container text-primary font-bold">${index + 1}</div>
+          <div class="space-y-2">
+            <p class="text-sm font-label uppercase tracking-widest text-outline">Suggestion</p>
+            <p class="text-base leading-relaxed text-on-surface">${escapeHtml(suggestion)}</p>
+          </div>
+        </div>
+      `;
+      suggestionsContainer.appendChild(item);
+    });
+  }
+
+  function renderNotes(entries) {
+    notesContainer.innerHTML = "";
+
+    if (!Array.isArray(entries) || entries.length === 0) {
+      notesStatus.textContent = "No saved notes yet";
+      const emptyState = document.createElement("div");
+      emptyState.className = "rounded-xl bg-surface-container p-5 text-on-surface-variant";
+      emptyState.textContent = "Start with a short note about how today feels for you.";
+      notesContainer.appendChild(emptyState);
+      return;
+    }
+
+    notesStatus.textContent = `${entries.length} saved note${entries.length === 1 ? "" : "s"}`;
+
+    entries.forEach((entry) => {
+      const card = document.createElement("article");
+      card.className = "bg-surface-container rounded-xl p-5 border border-white/40 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.12)]";
+      card.innerHTML = `
+        <div class="flex items-start justify-between gap-4">
+          <div class="space-y-3">
+            <p class="text-[11px] font-label uppercase tracking-widest text-outline">${escapeHtml(formatTimestamp(entry.created_at))}</p>
+            <p class="text-base leading-relaxed text-on-surface">${escapeHtml(entry.content || "")}</p>
+          </div>
+          <div class="flex items-center gap-2 shrink-0">
+            <button class="rounded-full bg-white/70 px-3 py-2 text-sm text-primary hover:bg-white" data-action="edit" data-id="${entry.id}" type="button">Edit</button>
+            <button class="rounded-full bg-error-container/10 px-3 py-2 text-sm text-error hover:bg-error-container/20" data-action="delete" data-id="${entry.id}" type="button">Delete</button>
+          </div>
+        </div>
+      `;
+      notesContainer.appendChild(card);
+    });
+  }
+
+  async function loadSuggestions() {
+    try {
+      const response = await fetch(`${API_BASE_URL}/journal/suggestions`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || "Unable to load suggestions.");
+      }
+
+      suggestionsStatus.textContent = "Updated from your latest conversation";
+      renderSuggestions(data.suggestions);
+    } catch (error) {
+      console.error("SUGGESTIONS LOAD FAILED:", error);
+      suggestionsStatus.textContent = "Unable to load suggestions";
+      renderSuggestions([]);
+    }
+  }
+
+  async function loadNotes() {
+    try {
+      const response = await fetch(`${API_BASE_URL}/journal`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || "Unable to load journal notes.");
+      }
+
+      renderNotes(Array.isArray(data) ? data : []);
+    } catch (error) {
+      console.error("NOTES LOAD FAILED:", error);
+      notesStatus.textContent = "Unable to load notes";
+      notesContainer.innerHTML = "";
+      const errorCard = document.createElement("div");
+      errorCard.className = "rounded-xl bg-error-container/10 border border-error-container/20 text-error p-5";
+      errorCard.textContent = error.message || "Unable to load notes.";
+      notesContainer.appendChild(errorCard);
+    }
+  }
+
+  async function saveNote() {
+    const content = noteInput.value.trim();
+    if (!content) {
+      alert("Please write something before saving.");
+      return;
+    }
+
+    const wasEditing = Boolean(editingNoteId);
+    editorStatus.textContent = editingNoteId ? "Updating note..." : "Saving note...";
+
+    try {
+      const response = await fetch(
+        editingNoteId ? `${API_BASE_URL}/journal/${editingNoteId}` : `${API_BASE_URL}/journal`,
+        {
+          method: editingNoteId ? "PUT" : "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+          },
+          body: JSON.stringify({ content })
+        }
+      );
+
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || "Unable to save note.");
+      }
+
+      setEditorMode();
+      await loadNotes();
+      editorStatus.textContent = wasEditing ? "Note updated." : "Note saved.";
+    } catch (error) {
+      console.error("SAVE NOTE FAILED:", error);
+      editorStatus.textContent = "Unable to save note.";
+      alert(error.message || "Unable to save note.");
+    }
+  }
+
+  async function deleteNote(entryId) {
+    try {
+      const response = await fetch(`${API_BASE_URL}/journal/${entryId}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || "Unable to delete note.");
+      }
+
+      if (editingNoteId === entryId) {
+        setEditorMode();
+      }
+
+      await loadNotes();
+    } catch (error) {
+      console.error("DELETE NOTE FAILED:", error);
+      alert(error.message || "Unable to delete note.");
+    }
+  }
+
+  async function handleNotesClick(event) {
+    const button = event.target.closest("button[data-action]");
+    if (!button) {
+      return;
+    }
+
+    const entryId = Number(button.dataset.id);
+    if (!entryId) {
+      return;
+    }
+
+    if (button.dataset.action === "delete") {
+      await deleteNote(entryId);
+      return;
+    }
+
+    if (button.dataset.action === "edit") {
+      try {
+        const response = await fetch(`${API_BASE_URL}/journal`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+
+        const data = await response.json();
+        if (!response.ok) {
+          throw new Error(data.error || "Unable to load note details.");
+        }
+
+        const note = (Array.isArray(data) ? data : []).find((item) => item.id === entryId);
+        if (note) {
+          setEditorMode(note);
+          noteInput.focus();
+        }
+      } catch (error) {
+        console.error("EDIT NOTE LOAD FAILED:", error);
+        alert(error.message || "Unable to load note details.");
+      }
+    }
+  }
+
+  saveNoteButton.addEventListener("click", saveNote);
+  notesContainer.addEventListener("click", handleNotesClick);
+
+  logoutButton.addEventListener("click", () => {
+    clearToken();
+    localStorage.removeItem("token");
+    localStorage.removeItem("sahaayToken");
+    window.location.href = "./login.html";
+  });
+
+  setEditorMode();
+  loadSuggestions();
+  loadNotes();
+</script>
+</body>
+</html>
